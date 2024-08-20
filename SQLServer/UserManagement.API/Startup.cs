@@ -80,8 +80,7 @@ namespace UserManagement.API
                     {
                         builder.WithOrigins("http://localhost:4000",
                                             "http://localhost:4200",
-                                             "http://localhost:4201",
-                                             "http://localhost:5000")
+                                             "http://localhost:4201")
                                .WithExposedHeaders("X-Pagination")
                                .AllowAnyHeader()
                                .AllowCredentials()
@@ -180,10 +179,10 @@ namespace UserManagement.API
                 c.RoutePrefix = "swagger";
             });
             app.UseStaticFiles();
-            app.UseCors("ExposeResponseHeaders");
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseRouting();
+            app.UseCors("ExposeResponseHeaders");
             app.UseAuthorization();
             app.UseResponseCompression();
 
